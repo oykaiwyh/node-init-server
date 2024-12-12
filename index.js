@@ -6,8 +6,8 @@ const path = require('node:path')
 
 /* 项目依赖 */
 const { APP_CONFIG } = require('./config/index')
-const fileUploadRoutes = require('./routes/fileUpload/index')
-const { commonMorgan, errorMorgan } = require('./middleware/logger')
+const fileUploadRoutes = require('./src/routes/fileUpload/index')
+const { commonMorgan, errorMorgan } = require('./src/middleware/logger')
 
 /* 实例 */
 const app = express()
