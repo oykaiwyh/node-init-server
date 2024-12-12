@@ -10,6 +10,11 @@ const { commonMorgan, errorMorgan } = require('./middleware/logger')
 const app = express()
 
 /* 中间件 */
+// POST/PUT的json解析 parse application/json (for express@4.16.x)
+app.use(express.json());
+//parse  application/x-www-form-urlencoded (for express@4.16.x)
+app.use(express.urlencoded({ extended: false }));
+
 // 日志
 app.use(errorMorgan)
 app.use(commonMorgan)
