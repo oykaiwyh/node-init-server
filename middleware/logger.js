@@ -34,7 +34,6 @@ var rotatingErrorLogStream = FileStreamRotator.getStream({
 
 const errorMorgan = morgan('combined', {
   skip: function (req, res) {
-    console.log('XXXX', res.statusCode);
     return ![404, 500].includes(res.statusCode)
   },
   stream: rotatingErrorLogStream

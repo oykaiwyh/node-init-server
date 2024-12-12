@@ -1,6 +1,9 @@
 /* 外部依赖 */
 const express = require('express')
 
+// node自身依赖
+const path = require('node:path')
+
 /* 项目依赖 */
 const { APP_CONFIG } = require('./config/index')
 const fileUploadRoutes = require('./routes/fileUpload/index')
@@ -15,11 +18,14 @@ app.use(express.json());
 //parse  application/x-www-form-urlencoded (for express@4.16.x)
 app.use(express.urlencoded({ extended: false }));
 
+// 静态文件服务
+app.use('/static', express.static(path.join(__dirname, 'public')));
+
 // 日志
 app.use(errorMorgan)
 app.use(commonMorgan)
 
-
+// 路由
 app.use('/node', fileUploadRoutes)
 
 
